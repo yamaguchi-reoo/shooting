@@ -25,6 +25,7 @@ int WINAPI WinMain(_In_ HINSTANCE  hInstance, _In_opt_ HINSTANCE hPrevInstance, 
         ClearDrawScreen(); // 画面の初期化
 
         PadInput::UpdateKey();
+        KeyInput::UpdateKey();
         // シーンマネジャーでシーンの描画開始
         sceneMng->Draw();
 
