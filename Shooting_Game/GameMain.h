@@ -19,5 +19,7 @@ public:
 
     // •`‰æ‚ÉŠÖ‚·‚é‚±‚Æ‚ðŽÀ‘•
     virtual void Draw() const override;
+
+    void HitChaeck();
 };
 

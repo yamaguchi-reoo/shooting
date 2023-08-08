@@ -4,7 +4,7 @@
 class Title : public AbstractScene {
 private:
     int MenuNumber;//カーソル用変数
-    int Image;//画像用変数
+    //int Image;//画像用変数
 public:
     // コンストラクタ
     Title();

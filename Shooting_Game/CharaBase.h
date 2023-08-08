@@ -1,14 +1,15 @@
 #pragma once
-class CharaBase
+#include"SphereCollider.h"
+class CharaBase:public SphereCollider
 {
 protected:
 	int image;
 	float speed;
 private:
-	virtual void Update();
+	virtual void Update() = 0;
 
-	virtual void Draw()const;
+	virtual void Draw()const = 0;
 
-	virtual void Hit();
+	virtual void Hit() = 0;
 };
 

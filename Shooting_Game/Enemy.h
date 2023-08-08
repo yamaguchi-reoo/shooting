@@ -1,7 +1,7 @@
 #pragma once
 #include "CharaBase.h"
 #include "SphereCollider.h"
-class Enemy:public CharaBase,SphereCollider
+class Enemy:public CharaBase
 {
 	
 private:
@@ -11,7 +11,7 @@ public:
 
 	void Update()override;
 	void Draw()const override;
-	void Hit()override;;
+	void Hit()override;
 
 };
 

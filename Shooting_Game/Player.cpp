@@ -8,6 +8,8 @@ Player::Player()
 	location.r = 40;
 
 	speed = 5;
+
+	flg = 0;
 }
 
 Player::~Player()
@@ -40,10 +42,15 @@ void Player::Update()
 void Player::Draw() const
 {
 	DrawCircle(location.x, location.y, location.r, 0xff000f, TRUE);
-
+	DrawFormatString(10, 40, 0xffffff, "%d",flg);
+	if (flg == 1)
+	{
+		DrawString(10, 20, "HIT!!!!!!!",0xffffff);
+	}
 	//DrawBox(40, 40, 90, 90, 0xffffff, FALSE);
 }
 void Player::Hit()
 {
-	
+	flg = 1;
 }
+
