@@ -3,7 +3,7 @@
 
 SphereCollider::SphereCollider(){
 }
-bool SphereCollider::HitSphere(SphereCollider* spherecollider)const {
+int SphereCollider::HitSphere(SphereCollider* spherecollider){
 	bool ret = false;
 
 	//ƒvƒŒƒCƒ„[‚Ì“–‚½‚è”»’è‚Ì”ÍˆÍ

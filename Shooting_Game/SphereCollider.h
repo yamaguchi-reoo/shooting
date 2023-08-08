@@ -10,6 +10,6 @@ protected:
 	//int radius;
 public:
 	SphereCollider();
-	bool HitSphere(SphereCollider* spherecollider)const;
+	int HitSphere(SphereCollider* spherecollider);
 };
 
