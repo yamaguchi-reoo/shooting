@@ -1,12 +1,16 @@
 #pragma once
-class Player
+#include "CharaBase.h"
+#include "PadInput.h"
+#include"SphereCollider.h"
+class Player:public CharaBase,SphereCollider
 {
 private:
 public:
 	Player();
 	~Player();
 
-	void Update();
-	void Draw()const;
+	void Update()override;
+	void Draw()const override;
+	void Hit()override;
 };
 

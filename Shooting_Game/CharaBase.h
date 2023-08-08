@@ -1,7 +1,7 @@
 #pragma once
 class CharaBase
 {
-public:
+protected:
 	int image;
 	float speed;
 private:
@@ -9,6 +9,6 @@ private:
 
 	virtual void Draw()const;
 
-
+	virtual void Hit();
 };
 
