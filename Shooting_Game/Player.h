@@ -13,6 +13,6 @@ public:
 	void Update()override;
 	void Draw() const override;
 	void Hit() override;
-	bool PlayerFlg();
+	void PlayerFlg();
 };
 

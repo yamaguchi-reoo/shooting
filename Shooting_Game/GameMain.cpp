@@ -16,6 +16,10 @@ AbstractScene* GameMain::Update()
 	if (player->HitSphere(enemy) == true) {
 		player->Hit();
 	}
+	else
+	{
+		player->PlayerFlg();
+	}
 	
 	return this;
 }
