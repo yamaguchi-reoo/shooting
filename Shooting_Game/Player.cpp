@@ -19,22 +19,22 @@ Player::~Player()
 void Player::Update()
 {
 	//‰EˆÚ“®
-	if (PadInput::GetLStick().ThumbX < -10000){
+	if (PadInput::GetLStick().ThumbX < -10000 || KeyInput::OnPresed(KEY_INPUT_A)) {
 		speed = 4;
 		location.x = location.x - speed;
 	}
 	//¶ˆÚ“®
-	if (PadInput::GetLStick().ThumbX > 10000) {
+	if (PadInput::GetLStick().ThumbX > 10000 || KeyInput::OnPresed(KEY_INPUT_D)) {
 		speed = 4;
 		location.x = location.x + speed;
 	}
 	//ãˆÚ“®
-	if (PadInput::GetLStick().ThumbY > 10000) {
+	if (PadInput::GetLStick().ThumbY > 10000 || KeyInput::OnPresed(KEY_INPUT_W)) {
 		speed = 4;
 		location.y = location.y - speed;
 	}
 	//‰ºˆÚ“®
-	if (PadInput::GetLStick().ThumbY < -10000) {
+	if (PadInput::GetLStick().ThumbY < -10000 || KeyInput::OnPresed(KEY_INPUT_S)) {
 		speed = 4;
 		location.y = location.y + speed;
 	}
