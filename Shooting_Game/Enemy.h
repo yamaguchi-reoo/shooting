@@ -3,7 +3,7 @@
 #include "SphereCollider.h"
 class Enemy:public CharaBase
 {
-	
+	bool flg;
 private:
 public:
 	Enemy();

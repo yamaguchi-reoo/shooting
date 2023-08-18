@@ -2,11 +2,13 @@
 #include"AbstractScene.h"
 #include"Player.h"
 #include"Enemy.h"
+#include"Bullet.h"
 class GameMain :
     public AbstractScene{
 private:
     Player* player;
     Enemy* enemy;
+    Bullet* bullet;
 public:
     // コンストラクタ
     GameMain();

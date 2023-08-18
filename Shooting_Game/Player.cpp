@@ -1,6 +1,9 @@
 #include "Player.h"
 #include"PadInput.h"
 
+float Player::LocationX;
+float Player::LocationY
+;
 Player::Player()
 {
 	image = LoadGraph("images/player02.png");
@@ -8,9 +11,9 @@ Player::Player()
 	location.y = 600;
 	location.r = 50;
 
-	speed = 10;
+	speed = 4;
 
-	flg = 0;
+	flg = false;
 }
 
 Player::~Player()
@@ -59,6 +62,8 @@ void Player::Update()
 	{
 		location.x = 1258;
 	}
+	LocationX = location.x;
+	LocationY = location.y;
 }
 void Player::Draw() const
 {
@@ -74,11 +79,11 @@ void Player::Draw() const
 }
 void Player::Hit()
 {
-	flg = 1;
+	flg = true;
 }
 
 void Player::PlayerFlg()
 {
-	flg = 0;
+	flg = false;
 }
 

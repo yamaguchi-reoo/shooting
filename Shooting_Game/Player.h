@@ -5,7 +5,7 @@
 class Player :public CharaBase
 {
 private:
-	int flg;
+	int flg;//ƒtƒ‰ƒO
 public:
 	Player();
 	~Player();
@@ -14,5 +14,8 @@ public:
 	void Draw() const override;
 	void Hit() override;
 	void PlayerFlg();
+public:
+	static float LocationX;
+	static float LocationY;
 };
 
