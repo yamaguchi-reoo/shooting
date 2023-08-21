@@ -4,6 +4,7 @@
 #include "GameMain.h"
 enum class MENU {
 	GAME_MAIN = 0,
+    HELP,
 	RANKING,
 	END
 };
@@ -31,6 +32,9 @@ AbstractScene* Title::Update(){
         {
         case MENU::GAME_MAIN:
             return new GameMain();
+            break;
+        case MENU::HELP:
+            //return new Help();
             break;
         case MENU::RANKING:
             //return new Ranking();

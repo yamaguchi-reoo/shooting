@@ -28,6 +28,7 @@ int WINAPI WinMain(_In_ HINSTANCE  hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
         PadInput::UpdateKey();
         KeyInput::UpdateKey();
+        SetFontSize(16);
         fps.Update();	//çXêV
         fps.Draw();		//ï`âÊ
         

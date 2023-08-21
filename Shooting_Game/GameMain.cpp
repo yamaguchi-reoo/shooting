@@ -3,12 +3,21 @@
 GameMain::GameMain()
 {
 	player = new Player();
-	enemy = new Enemy();
-	bullet = new Bullet();
+	bullet = new Bullet(); 
+	for (int i = 0; i < ENEMY_MAX; i++) {
+		enemy[i] = new Enemy(i*200.0f,0);
+	}
+
+	life = 1;
 }
 
 GameMain::~GameMain()
 {
+	delete player;
+	for (int i = 0; i < ENEMY_MAX; i++) {
+		delete enemy[i];
+	}
+	delete bullet;
 }
 
 AbstractScene* GameMain::Update()
@@ -18,28 +27,40 @@ AbstractScene* GameMain::Update()
 	//’e‚ÌXVˆ—
 	bullet->Update();
 	//ƒvƒŒƒCƒ„[‚Æ“G‚ª“–‚½‚Á‚½‚çƒtƒ‰ƒO‚ðtrue‚É...
-	if (player->HitSphere(enemy) == true) {
-		player->Hit();
-	}
-	else
-	{
-		player->PlayerFlg();
-	}
-	if (bullet->HitSphere(enemy) == true) {
-		enemy->Hit();
+	for (int i = 0; i < ENEMY_MAX; i++) {
+		if (player->HitSphere(enemy[i]) == (int)true) {
+			player->Hit();
+			life--;
+		}
+		else {
+			player->PlayerFlg();
+		}
+		if (bullet->HitSphere(enemy[i]) == (int)true) {
+			enemy[i]->Hit();
+		}
 	}
 	
+	
+	if (life < 0) {
+		return new GameOver();
+	}
+
 	return this;
 }
 
 void GameMain::Draw() const
 {
+	//Žc‹@‚Ì•`‰æ
+	DrawFormatString(60, 10, 0xffffff, "%d", life);
 	//“G‚Ì•`‰æ
-	enemy->Draw();
+	for (int i = 0; i < ENEMY_MAX; i++) {
+		enemy[i]->Draw();
+	}
 	//ƒvƒŒƒCƒ„[‚Ì•`‰æ
 	player->Draw();
 	//’e‚Ì•`‰æ
 	bullet->Draw();
+	
 }
 
 void GameMain::HitChaeck()

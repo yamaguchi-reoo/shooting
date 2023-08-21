@@ -3,12 +3,15 @@
 #include"Player.h"
 #include"Enemy.h"
 #include"Bullet.h"
+#include"GameOver.h"
 class GameMain :
     public AbstractScene{
 private:
-    Player* player;
-    Enemy* enemy;
-    Bullet* bullet;
+    Player* player;//プレイヤー 
+    Enemy* enemy[8];//エネミー
+    Bullet* bullet;//弾
+
+    int life;//残機
 public:
     // コンストラクタ
     GameMain();
