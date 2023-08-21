@@ -59,5 +59,4 @@ void Title::Draw() const{
 
     DrawTriangle(230, 255 + MenuNumber * 55, 250, 270 + MenuNumber * 55, 230, 285 + MenuNumber * 55, GetColor(255, 0, 0), TRUE);
 
-    SetFontSize(16);
 }

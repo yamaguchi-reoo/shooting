@@ -5,8 +5,8 @@ float Enemy::EnemyLocationX;
 
 Enemy::Enemy(int pos_x)
 {
-	location.x = pos_x + 200;//_x;
-	location.y = 100;
+	location.x = pos_x + 160;//_x;
+	location.y = -20.0f;
 	location.r = 31;
 
 	speed = 2;
@@ -22,9 +22,13 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
-	//if (spawn_flg == true){
-	//	location.y = location.y + speed;
-	//}
+	if (spawn_flg == true){
+		location.y = location.y + speed;
+	}
+
+	if (location.y > 740) {
+		location.y = -20.0f;
+	}
 }
 
 void Enemy::Draw() const
