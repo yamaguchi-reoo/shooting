@@ -3,9 +3,11 @@
 GameMain::GameMain()
 {
 	player = new Player();
-	bullet = new Bullet(); 
+	for (int i = 0; i < BULLET_MAX; i++) {
+		bullet[i] = new Bullet();
+	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
-		enemy[i] = new Enemy(i*200.0f,0);
+		enemy[i] = new Enemy(i * ENEMY_DISTANCE);
 	}
 
 	life = 1;
@@ -17,7 +19,9 @@ GameMain::~GameMain()
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		delete enemy[i];
 	}
-	delete bullet;
+	for (int i = 0; i < BULLET_MAX; i++) {
+		delete bullet[i];
+	}
 }
 
 AbstractScene* GameMain::Update()
@@ -25,21 +29,15 @@ AbstractScene* GameMain::Update()
 	//プレイヤーの更新処理
 	player->Update();
 	//弾の更新処理
-	bullet->Update();
-	//プレイヤーと敵が当たったらフラグをtrueに...
-	for (int i = 0; i < ENEMY_MAX; i++) {
-		if (player->HitSphere(enemy[i]) == (int)true) {
-			player->Hit();
-			life--;
-		}
-		else {
-			player->PlayerFlg();
-		}
-		if (bullet->HitSphere(enemy[i]) == (int)true) {
-			enemy[i]->Hit();
-		}
+	for (int i = 0; i <BULLET_MAX; i++) {
+		bullet[i]->Update();
 	}
-	
+	//エネミーの更新処理
+	for (int i = 0; i < ENEMY_MAX; i++) {
+		enemy[i]->Update();
+	}
+	//当たった時の処理
+	HitCheck();
 	
 	if (life < 0) {
 		return new GameOver();
@@ -59,11 +57,28 @@ void GameMain::Draw() const
 	//プレイヤーの描画
 	player->Draw();
 	//弾の描画
-	bullet->Draw();
-	
+	for (int i = 0; i < BULLET_MAX; i++) {
+		bullet[i]->Draw();
+	}
 }
 
-void GameMain::HitChaeck()
+void GameMain::HitCheck()
 {
+	//プレイヤーと敵が当たったらフラグをtrueに...
+	for (int i = 0; i < ENEMY_MAX; i++) {
+		if (player->HitSphere(enemy[i]) == (int)true) {
+			player->Hit();
+			life--;
+		}
+		else {
+			player->PlayerFlg();
+		}
+		for (int j = 0; j < BULLET_MAX; j++) {
+			if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
+				enemy[i]->Hit();
+			}
+		}
+		
+	}
 
 }

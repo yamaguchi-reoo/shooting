@@ -1,5 +1,9 @@
 #pragma once
 #include"SphereCollider.h"
+
+#define BULLET_MAX 20
+#define BULLET_DISTANCE 50
+
 class Bullet : public SphereCollider
 {
 private:
@@ -15,5 +19,7 @@ public:
 
 	void Update();
 	void Draw()const;
+
+	void PlayerBullet();
 };
 

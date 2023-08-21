@@ -5,7 +5,7 @@
 class Player :public CharaBase
 {
 private:
-	int flg;//フラグ
+	bool flg;//フラグ
 public:
 	Player();
 	~Player();

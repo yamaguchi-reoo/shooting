@@ -8,10 +8,12 @@ class GameMain :
     public AbstractScene{
 private:
     Player* player;//プレイヤー 
-    Enemy* enemy[8];//エネミー
-    Bullet* bullet;//弾
+    Enemy* enemy[ENEMY_MAX];//エネミー
+    Bullet* bullet[BULLET_MAX];//弾
 
     int life;//残機
+    //bool spawn_flg;
+    //bool CheckSpawn[8];
 public:
     // コンストラクタ
     GameMain();
@@ -25,6 +27,6 @@ public:
     // 描画に関することを実装
     void Draw() const override;
 
-    void HitChaeck();
+    void HitCheck();
 };
 

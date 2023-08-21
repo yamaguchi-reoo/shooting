@@ -3,8 +3,8 @@
 class CharaBase:public SphereCollider
 {
 protected:
-	int image;
-	float speed;
+	int image = 0;
+	float speed = 0;
 private:
 	virtual void Update() = 0;
 
