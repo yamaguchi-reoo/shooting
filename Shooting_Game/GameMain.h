@@ -17,10 +17,10 @@ public:
     ~GameMain();
 
     // •`‰æˆÈŠO‚ÌXV‚ğÀ‘•
-    virtual AbstractScene* Update() override;
+    AbstractScene* Update() override;
 
     // •`‰æ‚ÉŠÖ‚·‚é‚±‚Æ‚ğÀ‘•
-    virtual void Draw() const override;
+    void Draw() const override;
 
     void HitChaeck();
 };

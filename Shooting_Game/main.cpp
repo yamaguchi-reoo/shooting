@@ -8,7 +8,7 @@
 //メインプログラム 開始
 
 int WINAPI WinMain(_In_ HINSTANCE  hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR LpCmdLine, _In_ int NCmdShow) {
-    SetMainWindowText("BreakOut");         // ウィンドウタイトルを設定
+    SetMainWindowText("");         // ウィンドウタイトルを設定
 
     ChangeWindowMode(TRUE);                        // ウインドウモードで起動
 
