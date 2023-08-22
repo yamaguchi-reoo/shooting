@@ -2,7 +2,7 @@
 #include "CharaBase.h"
 #include "SphereCollider.h"
 
-#define ENEMY_MAX 5
+#define ENEMY_MAX 8
 #define ENEMY_DISTANCE 150
 
 class Enemy:public CharaBase
@@ -24,8 +24,11 @@ public:
 	void EnemySpwan();
 
 	void SetLocation(int _y);
-
+	//À•W‚Ìæ“¾
 	int GetLocation();
+	//
+	int GetFlg();
+
 public:
 	static float EnemyLocationX;
 };

@@ -5,9 +5,9 @@ float Enemy::EnemyLocationX;
 
 Enemy::Enemy(int pos_x,int pos_y)
 {
-	location.x = pos_x + 1300;//_x;
-	location.y = pos_y + 80;
-	location.r = 31;
+	location.x = (float)pos_x + 1300;//_x;
+	location.y = (float)pos_y + 80;
+	location.r = 21;
 
 	speed = 10;
 	flg = false;
@@ -27,14 +27,16 @@ void Enemy::Update()
 	}
 
 	if (location.x < -20) {
-		location.x = 1300.0f;
+		int Rand = GetRand(700);
+		location.x = Rand + 1300.0f;;
+		location.y = Rand + 80;
 	}
 }
 
 void Enemy::Draw() const
 {
 	if (flg == false) {
-		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0x00ffff, FALSE);
+		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0x00ffff, TRUE);
 	}
 	if (flg == true) {
 		DrawString(80, 25, "HIT!!!!!!!", 0xffffff);
@@ -69,5 +71,10 @@ void Enemy::SetLocation(int _x)
 }
 int Enemy::GetLocation()
 {
-	return location.x;
+	return (int)location.x;
+}
+
+int Enemy::GetFlg()
+{
+	return flg;
 }

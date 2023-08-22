@@ -26,7 +26,11 @@ public:
 
     // 描画に関することを実装
     void Draw() const override;
-
+    //弾/プレイヤー/敵の当たり判定のチェック
     void HitCheck();
+    //弾の配列に新しくデータを作成する
+    void BulletSpawn();
+    //エネミーがいるかいないか確認
+    int EnemyCheck();
 };
 

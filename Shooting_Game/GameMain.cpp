@@ -8,7 +8,7 @@ GameMain::GameMain()
 	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		int Rand = GetRand(700);
-		enemy[i] = new Enemy(Rand,i * ENEMY_DISTANCE);
+		enemy[i] = new Enemy(Rand , i * Rand /** ENEMY_DISTANCE*/);
 	}
 
 	life = 1;
@@ -39,10 +39,14 @@ AbstractScene* GameMain::Update()
 	}
 	//当たった時の処理
 	HitCheck();
-	
-	/*if (life < 0) {
+	//ライフが0でゲームオーバーへ
+	if (life < 0) {
 		return new GameOver();
-	}*/
+	}
+
+	if (EnemyCheck() == 0) {
+		return new GameOver();
+	}
 
 	return this;
 }
@@ -67,17 +71,31 @@ void GameMain::HitCheck()
 {
 	//プレイヤーと敵が当たったらフラグをtrueに...
 	for (int i = 0; i < ENEMY_MAX; i++) {
-		if (player->HitSphere(enemy[i]) == (int)true) {
-			player->Hit();
-			life--;
-		}
-		else {
-			player->PlayerFlg();
-		}
 		for (int j = 0; j < BULLET_MAX; j++) {
-			if (bullet[j]->HitSphere(enemy[i]) == (int)true&&bullet[j]->GetFlg() == true) {
+			if (player->HitSphere(enemy[i]) == (int)true) {
+				player->Hit();
+				//life--;
+			}
+			else {
+				player->PlayerFlg();
+			}
+			if (bullet[j]->HitSphere(enemy[i]) == (int)true && bullet[j]->GetFlg() == (int)true) {
 				enemy[i]->Hit();
 			}
-		}	
+		}
 	}
+}
+
+void GameMain::BulletSpawn()
+{
+}
+
+int GameMain::EnemyCheck()
+{
+	for (int i = 0; i < ENEMY_MAX; i++){
+		if (enemy[i]->GetFlg() == false) {
+			return -1;
+		}
+	}
+	return 0;
 }

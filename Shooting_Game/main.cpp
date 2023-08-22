@@ -20,7 +20,7 @@ int WINAPI WinMain(_In_ HINSTANCE  hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
     // タイトル シーンオブジェクト作成
     SceneManager* sceneMng = new SceneManager((AbstractScene*) new Title());
-    Fps fps;
+    Fps* fps = new Fps;
 
     // ゲームループし、シーンマネジャーでシーンの更新
     while ((ProcessMessage() == 0) && (sceneMng->Update() != nullptr)) {
@@ -29,13 +29,13 @@ int WINAPI WinMain(_In_ HINSTANCE  hInstance, _In_opt_ HINSTANCE hPrevInstance, 
         PadInput::UpdateKey();
         KeyInput::UpdateKey();
         SetFontSize(16);
-        fps.Update();	//更新
-        fps.Draw();		//描画
+        fps->Update();	//更新
+        fps->Draw();		//描画
         
         // シーンマネジャーでシーンの描画開始
         sceneMng->Draw();
 
-        fps.Wait();
+        fps->Wait();
         ScreenFlip(); // 裏画面の内容を表画面に反映する
     };
 
