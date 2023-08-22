@@ -22,8 +22,10 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
+	//ƒXƒ|[ƒ“‚µ‚Ä‚¢‚é‚È‚ç¶‚ÉŒü‚©‚Á‚Ä‚­‚é
 	if (spawn_flg == true){
 		location.x = location.x - speed;
+		//location.y = 0;
 	}
 
 	if (location.x < -20) {

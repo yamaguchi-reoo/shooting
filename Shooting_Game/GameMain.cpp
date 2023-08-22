@@ -7,8 +7,8 @@ GameMain::GameMain()
 		bullet[i] = new Bullet();
 	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
-		int Rand = GetRand(700);
-		enemy[i] = new Enemy(Rand , i * Rand /** ENEMY_DISTANCE*/);
+		int Rand = GetRand(4);
+		enemy[i] = new Enemy(Rand * 100, i * Rand * 100 /** ENEMY_DISTANCE*/);
 	}
 
 	life = 1;
@@ -45,7 +45,7 @@ AbstractScene* GameMain::Update()
 	}
 
 	if (EnemyCheck() == 0) {
-		return new GameOver();
+		return new GameClear();
 	}
 
 	return this;

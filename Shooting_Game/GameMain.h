@@ -4,6 +4,7 @@
 #include"Enemy.h"
 #include"Bullet.h"
 #include"GameOver.h"
+#include"GameClear.h"
 class GameMain :
     public AbstractScene{
 private:

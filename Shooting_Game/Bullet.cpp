@@ -8,7 +8,7 @@ Bullet::Bullet()
 	flg = false;
 	location.x = 0;
 	location.y = 0;
-	location.r = 5;
+	location.r = 50;
 
 	damege = 0;
 	speed = 15;

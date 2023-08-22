@@ -1,7 +1,7 @@
 #include "Player.h"
 #include"PadInput.h"
-
-#define PI 3.14
+#define _USE_MATH_DEFINES
+#include"math.h"
 
 float Player::LocationX;
 float Player::LocationY
@@ -70,7 +70,7 @@ void Player::Update()
 void Player::Draw() const
 {
 	DrawCircle(location.x, location.y, location.r, 0xff000f, FALSE);
-	DrawRotaGraph(location.x, location.y, 1.0, PI / 2, image, TRUE);
+	DrawRotaGraph(location.x, location.y, 1.0, M_PI / 2, image, TRUE);
 	DrawFormatString(10, 40, 0xffffff, "%d",flg);
 	DrawFormatString(10, 60, 0xffffff, "%f", location.y);
 	DrawFormatString(10, 80, 0xffffff, "%f", location.x);
