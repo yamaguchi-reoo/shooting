@@ -8,10 +8,10 @@ Bullet::Bullet()
 	flg = false;
 	location.x = 0;
 	location.y = 0;
-	location.r = 5;
+	location.r = 50;
 
 	damege = 0;
-	speed = 5;
+	speed = 15;
 	angle = 0.0f;
 	acceleration = 0.0f;
 	anglevelocity = 0.0f;
@@ -41,6 +41,7 @@ void Bullet::Draw() const
 void Bullet::PlayerBullet()
 {
 	if (flg == false) {
+		location.y = Player::LocationY;
 		location.x = Player::LocationX;
 	}
 	//b‚Ì’[‚ð‰Ÿ‚µ‚½‚ç’e”­ŽË
@@ -49,11 +50,15 @@ void Bullet::PlayerBullet()
 	}
 	if (flg == true)
 	{
-		location.y -= speed;
-		if (location.y < 0)
+		location.x += speed;
+		if (location.x > 1280)
 		{
 			flg = false;
-			location.y = Player::LocationY - 50;
+			location.x = Player::LocationX;//- 50;
 		}
 	}
+}
+int Bullet::GetFlg()
+{
+	return flg;
 }

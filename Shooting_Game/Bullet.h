@@ -21,5 +21,7 @@ public:
 	void Draw()const;
 
 	void PlayerBullet();
+
+	int GetFlg();
 };
 

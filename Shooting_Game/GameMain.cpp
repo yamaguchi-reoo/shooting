@@ -7,7 +7,8 @@ GameMain::GameMain()
 		bullet[i] = new Bullet();
 	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
-		enemy[i] = new Enemy(i * ENEMY_DISTANCE);
+		int Rand = GetRand(700);
+		enemy[i] = new Enemy(Rand,i * ENEMY_DISTANCE);
 	}
 
 	life = 1;
@@ -39,9 +40,9 @@ AbstractScene* GameMain::Update()
 	//“–‚½‚Á‚½Žž‚Ìˆ—
 	HitCheck();
 	
-	if (life < 0) {
+	/*if (life < 0) {
 		return new GameOver();
-	}
+	}*/
 
 	return this;
 }
@@ -49,7 +50,7 @@ AbstractScene* GameMain::Update()
 void GameMain::Draw() const
 {
 	//Žc‹@‚Ì•`‰æ
-	DrawFormatString(60, 10, 0xffffff, "%d", life);
+	//DrawFormatString(60, 10, 0xffffff, "%d", life);
 	//“G‚Ì•`‰æ
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		enemy[i]->Draw();
@@ -74,11 +75,9 @@ void GameMain::HitCheck()
 			player->PlayerFlg();
 		}
 		for (int j = 0; j < BULLET_MAX; j++) {
-			if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
+			if (bullet[j]->HitSphere(enemy[i]) == (int)true&&bullet[j]->GetFlg() == true) {
 				enemy[i]->Hit();
 			}
-		}
-		
+		}	
 	}
-
 }
