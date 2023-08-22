@@ -20,7 +20,7 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::Update()
+void Enemy::Update(GameMain* main)
 {
 	//ƒXƒ|[ƒ“‚µ‚Ä‚¢‚é‚È‚ç¶‚ÉŒü‚©‚Á‚Ä‚­‚é
 	if (spawn_flg == true){

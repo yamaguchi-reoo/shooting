@@ -104,8 +104,5 @@
     <ClCompile Include="N_wayBullet.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="BulletSpawner.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

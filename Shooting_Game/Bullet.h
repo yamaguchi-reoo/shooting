@@ -7,20 +7,17 @@
 class Bullet : public SphereCollider
 {
 private:
-	bool flg;
 	int damege;//ダメージ
 	int speed;//速度
 	float angle;//角度
 	float acceleration;//速度の変化量
 	float anglevelocity;//角度の変化量
 public:
-	Bullet();
+	Bullet(int _x, int _y, int _r, int _speed, int _damege);
 	~Bullet();
 
 	void Update();
 	void Draw()const;
-
-	void PlayerBullet();
 
 };
 

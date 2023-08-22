@@ -5,6 +5,9 @@
 #include"Bullet.h"
 #include"GameOver.h"
 #include"GameClear.h"
+class Player;
+class Enemy;
+
 class GameMain :
     public AbstractScene{
 private:
@@ -30,7 +33,7 @@ public:
     //弾/プレイヤー/敵の当たり判定のチェック
     void HitCheck();
     //弾の配列に新しくデータを作成する
-    void BulletSpawn();
+    void BulletSpawn(int _x,int _y,int _r,int _speed,int _damege);
     //エネミーがいるかいないか確認
     int EnemyCheck();
 };

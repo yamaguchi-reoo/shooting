@@ -16,7 +16,7 @@ public:
 	Enemy(int pos_x,int pos_y);
 	~Enemy();
 
-	void Update()override;
+	void Update(GameMain* main)override;
 	void Draw()const override;
 	void Hit()override;
 

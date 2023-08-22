@@ -1,6 +1,6 @@
 #include "CharaBase.h"
 
-void CharaBase::Update()
+void CharaBase::Update(GameMain* main)
 {
 }
 

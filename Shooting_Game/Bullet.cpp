@@ -3,15 +3,14 @@
 #include"Player.h"
 #include"Enemy.h"
 
-Bullet::Bullet()
+Bullet::Bullet(int _x, int _y, int _r, int _speed, int _damege)
 {
-	flg = false;
-	location.x = 0;
-	location.y = 0;
-	location.r = 50;
+	location.x = _x;
+	location.y = _y;
+	location.r = _r;
 
-	damege = 0;
-	speed = 15;
+	damege = _damege;
+	speed = _speed;
 	angle = 0.0f;
 	acceleration = 0.0f;
 	anglevelocity = 0.0f;
@@ -23,38 +22,14 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	//ƒvƒŒƒCƒ„[‚Ì’e
-	PlayerBullet();
+	location.x = location.x + speed;
 }
 
 void Bullet::Draw() const
 {
-	if (flg == true) {
-		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0xff0000, TRUE);
-	}
+	DrawCircle((int)location.x, (int)location.y, (int)location.r, 0xff0000, TRUE);
 	//DrawCircle(location.x, location.y, location.r, 0xff000f, FALSE);
-	DrawFormatString(10, 100, 0xffffff, "bullet %d", flg);
 	DrawFormatString(10, 120, 0xffffff, "bullet %f", location.y);
 	DrawFormatString(10, 140, 0xffffff, "bullet %f", location.x);
 }
 
-void Bullet::PlayerBullet()
-{
-	if (flg == false) {
-		location.y = Player::LocationY;
-		location.x = Player::LocationX;
-	}
-	//b‚Ì’[‚ð‰Ÿ‚µ‚½‚ç’e”­ŽË
-	if (PadInput::OnPressed(XINPUT_BUTTON_B) || KeyInput::OnPresed(KEY_INPUT_B)) {
-		flg = true;
-	}
-	if (flg == true)
-	{
-		location.x += speed;
-		if (location.x > 1280)
-		{
-			flg = false;
-			location.x = Player::LocationX;//- 50;
-		}
-	}
-}

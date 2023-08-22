@@ -8,6 +8,7 @@ float Player::LocationY
 ;
 Player::Player()
 {
+	warpon = new N_wayBullet();
 	image = LoadGraph("images/player02.png");
 	location.x = 600;
 	location.y = 600;
@@ -20,9 +21,10 @@ Player::Player()
 
 Player::~Player()
 {
+	delete warpon;
 }
 
-void Player::Update()
+void Player::Update(GameMain* main)
 {
 	//‰EˆÚ“®
 	if (PadInput::GetLStick().ThumbX < -10000 || KeyInput::OnPresed(KEY_INPUT_A)) {
@@ -66,11 +68,15 @@ void Player::Update()
 	}
 	LocationX = location.x;
 	LocationY = location.y;
+
+	if (PadInput::OnButton(XINPUT_BUTTON_B) || KeyInput::OnKey(KEY_INPUT_B)) {
+		warpon->Shoot(main, (int)location.x, (int)location.y);
+	}
 }
 void Player::Draw() const
 {
-	DrawCircle(location.x, location.y, location.r, 0xff000f, FALSE);
-	DrawRotaGraph(location.x, location.y, 1.0, M_PI / 2, image, TRUE);
+	DrawCircle((int)location.x, (int)location.y, (int)location.r, 0xff000f, FALSE);
+	DrawRotaGraph((int)location.x, (int)location.y, 1.0, M_PI / 2, image, TRUE);
 	DrawFormatString(10, 40, 0xffffff, "%d",flg);
 	DrawFormatString(10, 60, 0xffffff, "%f", location.y);
 	DrawFormatString(10, 80, 0xffffff, "%f", location.x);

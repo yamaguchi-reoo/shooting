@@ -4,7 +4,7 @@ GameMain::GameMain()
 {
 	player = new Player();
 	for (int i = 0; i < BULLET_MAX; i++) {
-		bullet[i] = new Bullet();
+		bullet[i] = NULL;
 	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		int Rand = GetRand(4);
@@ -28,14 +28,16 @@ GameMain::~GameMain()
 AbstractScene* GameMain::Update()
 {
 	//プレイヤーの更新処理
-	player->Update();
+	player->Update(this);
 	//弾の更新処理
 	for (int i = 0; i <BULLET_MAX; i++) {
-		bullet[i]->Update();
+		if (bullet[i] != NULL) {
+			bullet[i]->Update();
+		}	
 	}
 	//エネミーの更新処理
 	for (int i = 0; i < ENEMY_MAX; i++) {
-		enemy[i]->Update();
+		enemy[i]->Update(this);
 	}
 	//当たった時の処理
 	HitCheck();
@@ -63,7 +65,9 @@ void GameMain::Draw() const
 	player->Draw();
 	//弾の描画
 	for (int i = 0; i < BULLET_MAX; i++) {
-		bullet[i]->Draw();
+		if (bullet[i] != NULL) {
+			bullet[i]->Draw();
+		}
 	}
 }
 
@@ -72,21 +76,29 @@ void GameMain::HitCheck()
 	//プレイヤーと敵が当たったらフラグをtrueに...
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		for (int j = 0; j < BULLET_MAX; j++) {
-			if (player->HitSphere(enemy[i]) == (int)true) {
-				player->Hit();
-				//life--;
-			}
-			else {
-				player->PlayerFlg();
-			}
-			if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
-				enemy[i]->Hit();
+			if (bullet[i] != NULL) {
+				if (player->HitSphere(enemy[i]) == (int)true) {
+					player->Hit();
+					//life--;
+				}
+				else {
+					player->PlayerFlg();
+				}
+				if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
+					enemy[i]->Hit();
+				}
 			}
 		}
 	}
 }
-void GameMain::BulletSpawn()
+void GameMain::BulletSpawn(int _x, int _y, int _r, int _speed, int _damege)
 {
+	for (int i = 0; i < BULLET_MAX; i++) {
+		if (bullet[i] == NULL) {
+			bullet[i] = new Bullet(_x, _y, _r, _speed, _damege);
+		}
+		
+	}
 }
 int GameMain::EnemyCheck()
 {
