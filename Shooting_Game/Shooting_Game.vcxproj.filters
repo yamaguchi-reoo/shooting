@@ -48,9 +48,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="BulletsSpawner.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -58,6 +55,12 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="GameClear.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="N_wayBullet.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletSpawner.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,9 +92,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="BulletsSpawner.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -99,6 +99,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GameClear.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="N_wayBullet.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletSpawner.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

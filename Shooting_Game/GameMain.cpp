@@ -79,17 +79,15 @@ void GameMain::HitCheck()
 			else {
 				player->PlayerFlg();
 			}
-			if (bullet[j]->HitSphere(enemy[i]) == (int)true && bullet[j]->GetFlg() == (int)true) {
+			if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
 				enemy[i]->Hit();
 			}
 		}
 	}
 }
-
 void GameMain::BulletSpawn()
 {
 }
-
 int GameMain::EnemyCheck()
 {
 	for (int i = 0; i < ENEMY_MAX; i++){

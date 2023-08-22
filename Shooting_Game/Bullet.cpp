@@ -58,7 +58,3 @@ void Bullet::PlayerBullet()
 		}
 	}
 }
-int Bullet::GetFlg()
-{
-	return flg;
-}

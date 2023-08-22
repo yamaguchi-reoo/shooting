@@ -22,6 +22,5 @@ public:
 
 	void PlayerBullet();
 
-	int GetFlg();
 };
 
