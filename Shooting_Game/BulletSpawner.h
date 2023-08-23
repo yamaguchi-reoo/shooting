@@ -1,5 +1,6 @@
 #pragma once
 #include"GameMain.h"
+//‰¼‘zƒNƒ‰ƒX
 class GameMain;
 
 class BulletSpawner

@@ -5,6 +5,7 @@
 #include"Bullet.h"
 #include"GameOver.h"
 #include"GameClear.h"
+//‰¼‘zƒNƒ‰ƒX
 class Player;
 class Enemy;
 

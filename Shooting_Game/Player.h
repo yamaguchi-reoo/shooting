@@ -4,6 +4,7 @@
 #include "SphereCollider.h"
 #include "BulletSpawner.h"
 #include"N_wayBullet.h"
+//‰¼‘zƒNƒ‰ƒX
 class N_wayBullet;
 
 class Player :public CharaBase

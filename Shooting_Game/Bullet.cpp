@@ -2,6 +2,8 @@
 #include"PadInput.h"
 #include"Player.h"
 #include"Enemy.h"
+#define _USE_MATH_DEFINES
+#include"math.h"
 
 Bullet::Bullet(int _x, int _y, int _r, int _speed, int _damege)
 {

@@ -84,6 +84,7 @@ void GameMain::HitCheck()
 				else {
 					player->PlayerFlg();
 				}
+				//’e‚ª“G‚Æ“–‚½‚Á‚½‚Ìˆ—
 				if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
 					enemy[i]->Hit();
 				}
@@ -93,6 +94,7 @@ void GameMain::HitCheck()
 }
 void GameMain::BulletSpawn(int _x, int _y, int _r, int _speed, int _damege)
 {
+	//bullet‚ª‹ó‚¾‚Á‚½‚çˆø”‚ğ“n‚·
 	for (int i = 0; i < BULLET_MAX; i++) {
 		if (bullet[i] == NULL) {
 			bullet[i] = new Bullet(_x, _y, _r, _speed, _damege);
@@ -102,6 +104,7 @@ void GameMain::BulletSpawn(int _x, int _y, int _r, int _speed, int _damege)
 }
 int GameMain::EnemyCheck()
 {
+	//ƒGƒlƒ~[‚ª‰æ–Ê‚É‚¢‚½‚ç-1A‚¢‚È‚©‚Á‚½‚ç0‚ğ•Ô‚·
 	for (int i = 0; i < ENEMY_MAX; i++){
 		if (enemy[i]->GetFlg() == false) {
 			return -1;

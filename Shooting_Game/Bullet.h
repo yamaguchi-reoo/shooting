@@ -11,13 +11,12 @@ private:
 	int speed;//‘¬“x
 	float angle;//Šp“x
 	float acceleration;//‘¬“x‚Ì•Ï‰»—Ê
-	float anglevelocity;//Šp“x‚Ì•Ï‰»—Ê
+	float anglevelocity;//Šp“x‚Ì•Ï‰»—Êy;
 public:
 	Bullet(int _x, int _y, int _r, int _speed, int _damege);
 	~Bullet();
 
 	void Update();
 	void Draw()const;
-
 };
 

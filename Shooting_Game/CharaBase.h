@@ -1,5 +1,6 @@
 #pragma once
 #include"SphereCollider.h"
+//‰¼‘zƒNƒ‰ƒX
 class GameMain;
 
 class CharaBase:public SphereCollider
