@@ -1,17 +1,18 @@
 #pragma once
 #include "CharaBase.h"
 #include "SphereCollider.h"
+#include "N_wayBullet.h"
 
-#define ENEMY_MAX 8
-#define ENEMY_DISTANCE 150
+//仮想クラス
+class N_wayBullet;
 
 class Enemy:public CharaBase
 {
+private:
 	bool flg;		// フラグ
 	int enemy_type;	// エネミーのタイプ(0..  1.. )
 	bool spawn_flg;	// スポーン用フラグ
 	int span;	//待ち時間
-private:
 public:
 	Enemy(int pos_x,int pos_y);
 	~Enemy();

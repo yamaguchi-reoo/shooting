@@ -75,16 +75,16 @@ void GameMain::HitCheck()
 {
 	//プレイヤーと敵が当たったらフラグをtrueに...
 	for (int i = 0; i < ENEMY_MAX; i++) {
+		if (player->HitSphere(enemy[i]) == (int)true) {
+			player->Hit();
+			life--;
+		}
+		else {
+			player->PlayerFlg();
+		}
+		//弾が敵と当たった時の処理
 		for (int j = 0; j < BULLET_MAX; j++) {
 			if (bullet[i] != NULL) {
-				if (player->HitSphere(enemy[i]) == (int)true) {
-					player->Hit();
-					//life--;
-				}
-				else {
-					player->PlayerFlg();
-				}
-				//弾が敵と当たった時の処理
 				if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
 					enemy[i]->Hit();
 				}

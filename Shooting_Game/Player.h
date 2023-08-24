@@ -2,8 +2,7 @@
 #include "CharaBase.h"
 #include "PadInput.h"
 #include "SphereCollider.h"
-#include "BulletSpawner.h"
-#include"N_wayBullet.h"
+#include "N_wayBullet.h"
 //‰¼‘zƒNƒ‰ƒX
 class N_wayBullet;
 

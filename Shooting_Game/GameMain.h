@@ -5,6 +5,12 @@
 #include"Bullet.h"
 #include"GameOver.h"
 #include"GameClear.h"
+
+#define ENEMY_MAX 8
+#define ENEMY_DISTANCE 150
+
+#define BULLET_MAX 20
+
 //‰¼‘zƒNƒ‰ƒX
 class Player;
 class Enemy;
