@@ -35,17 +35,22 @@ AbstractScene* GameMain::Update()
 			bullet[i]->Update();
 		}	
 	}
+	/*for (int i = 0; i < BULLET_MAX; i++) {
+		if (bullet[i]->GetLocation()>= SCREEN_WIDTH) {
+		}
+	}*/
 	//エネミーの更新処理
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		enemy[i]->Update(this);
 	}
+
+
 	//当たった時の処理
 	HitCheck();
 	//ライフが0でゲームオーバーへ
 	if (life < 0) {
 		return new GameOver();
 	}
-
 	if (EnemyCheck() == 0) {
 		return new GameClear();
 	}
@@ -82,9 +87,11 @@ void GameMain::HitCheck()
 		else {
 			player->PlayerFlg();
 		}
-		//弾が敵と当たった時の処理
+	}
+	//弾が敵と当たった時の処理
+	for (int i = 0; i < ENEMY_MAX; i++) {
 		for (int j = 0; j < BULLET_MAX; j++) {
-			if (bullet[i] != NULL) {
+			if (bullet[j] != NULL) {
 				if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
 					enemy[i]->Hit();
 				}
@@ -92,14 +99,14 @@ void GameMain::HitCheck()
 		}
 	}
 }
-void GameMain::BulletSpawn(int _x, int _y, int _r, int _speed, int _damege)
+void GameMain::BulletSpawn(int _x, int _y, int _r, int _speed, int _damege,int _who)
 {
 	//bulletが空だったら引数を渡す
 	for (int i = 0; i < BULLET_MAX; i++) {
 		if (bullet[i] == NULL) {
-			bullet[i] = new Bullet(_x, _y, _r, _speed, _damege);
+			bullet[i] = new Bullet(_x, _y, _r, _speed, _damege,_who);
+			break;
 		}
-		
 	}
 }
 int GameMain::EnemyCheck()

@@ -7,6 +7,6 @@ private:
 	float base_angle;// ”­Ë‚·‚éÅ‰‚Ì’e‚ÌŒü‚«
 	float angle_diff;// ’e“¯m‚ÌŠp“x·
 public:
-	void Shoot(GameMain* main, int _x, int _y)override;
+	void Shoot(GameMain* main, int _x, int _y,int _who)override;
 };
 

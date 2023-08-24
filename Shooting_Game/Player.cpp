@@ -70,7 +70,7 @@ void Player::Update(GameMain* main)
 	LocationY = location.y;
 	//Bƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚ç’e‚ð”­ŽË
 	if (PadInput::OnButton(XINPUT_BUTTON_B) || KeyInput::OnKey(KEY_INPUT_B)) {
-		warpon->Shoot(main, (int)location.x, (int)location.y);
+		warpon->Shoot(main, (int)location.x, (int)location.y, 0);
 	}
 }
 void Player::Draw() const

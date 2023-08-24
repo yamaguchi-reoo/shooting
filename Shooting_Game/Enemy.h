@@ -9,6 +9,8 @@ class N_wayBullet;
 class Enemy:public CharaBase
 {
 private:
+	N_wayBullet* warpon;
+
 	bool flg;		// フラグ
 	int enemy_type;	// エネミーのタイプ(0..  1.. )
 	bool spawn_flg;	// スポーン用フラグ

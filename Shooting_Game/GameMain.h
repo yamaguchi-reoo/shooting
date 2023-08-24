@@ -5,11 +5,9 @@
 #include"Bullet.h"
 #include"GameOver.h"
 #include"GameClear.h"
+#include"common.h"
 
-#define ENEMY_MAX 8
-#define ENEMY_DISTANCE 150
 
-#define BULLET_MAX 20
 
 //仮想クラス
 class Player;
@@ -40,7 +38,7 @@ public:
     //弾/プレイヤー/敵の当たり判定のチェック
     void HitCheck();
     //弾の配列に新しくデータを作成する
-    void BulletSpawn(int _x,int _y,int _r,int _speed,int _damege);
+    void BulletSpawn(int _x,int _y,int _r,int _speed,int _damege, int _who);
     //エネミーがいるかいないか確認
     int EnemyCheck();
 };

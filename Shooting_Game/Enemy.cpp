@@ -5,6 +5,7 @@ float Enemy::EnemyLocationX;
 
 Enemy::Enemy(int pos_x,int pos_y)
 {
+	warpon = new N_wayBullet();
 	location.x = (float)pos_x + 1300;//_x;
 	location.y = (float)pos_y + 80;
 	location.r = 21;
@@ -30,14 +31,18 @@ void Enemy::Update(GameMain* main)
 
 	if (location.x < -20) {
 		int Rand = GetRand(700);
-		location.x = Rand + 1300.0f;;
-		location.y = Rand + 80;
+		location.x = (float)Rand + 1300.0f;;
+		location.y = (float)Rand + 80.0f;
 	}
+	if (PadInput::OnButton(XINPUT_BUTTON_A) || KeyInput::OnKey(KEY_INPUT_N)) {
+		warpon->Shoot(main, (int)location.x, (int)location.y, 1);
+	}
+
 }
 
 void Enemy::Draw() const
 {
-	if (flg == false) {
+	if (spawn_flg == true && flg == false) {
 		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0x00ffff, TRUE);
 	}
 	if (flg == true) {
@@ -49,6 +54,8 @@ void Enemy::Draw() const
 void Enemy::Hit()
 {
 	flg = true;
+	spawn_flg = false;
+
 }
 
 void Enemy::EnemySpwan()
@@ -69,7 +76,7 @@ void Enemy::EnemySpwan()
 
 void Enemy::SetLocation(int _x)
 {
-	location.x = (int)_x;
+	location.x = (float)_x;
 }
 int Enemy::GetLocation()
 {
