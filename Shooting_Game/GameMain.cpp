@@ -8,10 +8,13 @@ GameMain::GameMain()
 	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		int Rand = GetRand(4);
-		enemy[i] = new Enemy(Rand * 100, i * Rand * 100 /** ENEMY_DISTANCE*/);
+		enemy[i] = new Enemy(Rand * 100, i*80 /** Rand * 100*/ /** ENEMY_DISTANCE*/);
 	}
 
 	life = 1;
+	hit_time = 0;
+	hit_flg = false;
+	flash_flg = true;
 }
 
 GameMain::~GameMain()
@@ -35,15 +38,29 @@ AbstractScene* GameMain::Update()
 			bullet[i]->Update();
 		}	
 	}
-	/*for (int i = 0; i < BULLET_MAX; i++) {
-		if (bullet[i]->GetLocation()>= SCREEN_WIDTH) {
+	//弾が画面外に行くと削除
+	for (int i = 0; i < BULLET_MAX; i++) {
+		if (bullet[i] != NULL) {
+			if (bullet[i]->GetLocation() >= SCREEN_WIDTH || bullet[i]->GetLocation() <= 0) {
+				bullet[i] = NULL;
+			}
 		}
-	}*/
+	}
 	//エネミーの更新処理
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		enemy[i]->Update(this);
 	}
 
+	//ダメージを受けたら点滅
+	if (hit_flg == true) {
+		if (++hit_time % 20 == 0) {
+			flash_flg =! flash_flg;
+		}
+		if (hit_time >= 120) {
+			hit_flg = false;
+			hit_time = 0;
+		}
+	}
 
 	//当たった時の処理
 	HitCheck();
@@ -51,6 +68,7 @@ AbstractScene* GameMain::Update()
 	if (life < 0) {
 		return new GameOver();
 	}
+	//画面内にエネミーがいるか
 	if (EnemyCheck() == 0) {
 		return new GameClear();
 	}
@@ -67,13 +85,19 @@ void GameMain::Draw() const
 		enemy[i]->Draw();
 	}
 	//プレイヤーの描画
-	player->Draw();
+	if (flash_flg == true) {
+		player->Draw();
+	}
+	
 	//弾の描画
 	for (int i = 0; i < BULLET_MAX; i++) {
 		if (bullet[i] != NULL) {
 			bullet[i]->Draw();
 		}
 	}
+	DrawFormatString(10, 190, 0xffffff, "%d", hit_time);
+	DrawFormatString(10, 210, 0xffffff, "%d", hit_flg);
+	DrawFormatString(10, 230, 0xffffff, "%d", flash_flg);
 }
 
 void GameMain::HitCheck()
@@ -82,19 +106,28 @@ void GameMain::HitCheck()
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		if (player->HitSphere(enemy[i]) == (int)true) {
 			player->Hit();
-			life--;
+			//life--;
 		}
 		else {
 			player->PlayerFlg();
 		}
 	}
-	//弾が敵と当たった時の処理
+	//プレイヤーの弾が敵と当たった時の処理
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		for (int j = 0; j < BULLET_MAX; j++) {
 			if (bullet[j] != NULL) {
-				if (bullet[j]->HitSphere(enemy[i]) == (int)true) {
+				if (bullet[j]->HitSphere(enemy[i]) == (int)true && bullet[j]->GetWho() == 0) {
 					enemy[i]->Hit();
 				}
+			}
+		}
+	}
+	//エネミーの弾がプレイヤーに当たった時
+	for (int i = 0; i < BULLET_MAX; i++) {
+		if (bullet[i] != NULL) {
+			if (bullet[i]->HitSphere(player) == (int)true && bullet[i]->GetWho() == 1 && hit_flg == false) {
+				life--;
+				hit_flg = true;
 			}
 		}
 	}

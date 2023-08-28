@@ -29,18 +29,29 @@ void Bullet::Update()
 		location.x = location.x + speed;
 	}
 	if (who == 1) {
+		speed = 6;
 		location.x = location.x - speed;
+		location.r = 8.0f;
 	}
 }
 void Bullet::Draw() const
 {
-	DrawCircle((int)location.x, (int)location.y, (int)location.r, 0xff0000, TRUE);
+	if (who == 0) {
+		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0xff0000, TRUE);
+	}
+	if (who == 1) {
+		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0x00ffff, TRUE);
+	}
 	//DrawCircle(location.x, location.y, location.r, 0xff000f, FALSE);
 	DrawFormatString(10, 120, 0xffffff, "bullet %f", location.y);
 	DrawFormatString(10, 140, 0xffffff, "bullet %f", location.x);
 }
-int Bullet::GetLocation()
+float Bullet::GetLocation()
 {
 	return location.x;
+}
+int Bullet::GetWho()
+{
+	return who;
 }
 

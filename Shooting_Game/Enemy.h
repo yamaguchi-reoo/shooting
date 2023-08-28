@@ -24,12 +24,12 @@ public:
 	void Hit()override;
 
 	//エネミーのスポーン
-	void EnemySpwan();
+	//void EnemySpwan();
 
-	void SetLocation(int _y);
-	//座標の取得
-	int GetLocation();
-	//
+	//void SetLocation(int _y);
+	////座標の取得
+	//int GetLocation();
+	////
 	int GetFlg();
 
 public:

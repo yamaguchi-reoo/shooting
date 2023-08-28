@@ -7,8 +7,6 @@
 #include"GameClear.h"
 #include"common.h"
 
-
-
 //仮想クラス
 class Player;
 class Enemy;
@@ -21,8 +19,10 @@ private:
     Bullet* bullet[BULLET_MAX];//弾
 
     int life;//残機
-    //bool spawn_flg;
-    //bool CheckSpawn[8];
+
+    int hit_time;//敵と当たった時の経過時間
+    bool hit_flg;//当たったか当たってないかの判断フラグ
+    bool flash_flg;//点滅
 public:
     // コンストラクタ
     GameMain();

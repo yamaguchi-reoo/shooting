@@ -18,6 +18,9 @@ public:
 	void Update();
 	void Draw()const;
 
-	int GetLocation();
+	//À•W‚Ìæ“¾
+	float GetLocation();
+	//’N‚ª”­Ë‚µ‚Ä‚¢‚é‚©
+	int GetWho();
 };
 
