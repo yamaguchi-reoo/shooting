@@ -6,6 +6,7 @@ float Enemy::EnemyLocationX;
 Enemy::Enemy(int pos_x,int pos_y)
 {
 	warpon = new N_wayBullet();
+
 	location.x = (float)pos_x + 1300;//_x;
 	location.y = (float)pos_y + 130;
 	location.r = 21;
@@ -15,12 +16,13 @@ Enemy::Enemy(int pos_x,int pos_y)
 	spawn_flg = true;
 	enemy_type = -1;
 	span = 0;
-}
 
+	score = 20;
+}
 Enemy::~Enemy()
 {
+	delete warpon;
 }
-
 void Enemy::Update(GameMain* main)
 {
 	//ƒXƒ|[ƒ“‚µ‚Ä‚¢‚é‚È‚ç¶‚ÉŒü‚©‚Á‚Ä‚­‚é
@@ -59,4 +61,8 @@ void Enemy::Hit()
 int Enemy::GetFlg()
 {
 	return flg;
+}
+int Enemy::GetScore()
+{
+	return score;
 }

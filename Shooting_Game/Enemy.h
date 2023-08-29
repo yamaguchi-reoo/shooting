@@ -15,6 +15,8 @@ private:
 	int enemy_type;	// エネミーのタイプ(0..  1.. )
 	bool spawn_flg;	// スポーン用フラグ
 	int span;	//待ち時間
+
+	int score;
 public:
 	Enemy(int pos_x,int pos_y);
 	~Enemy();
@@ -30,7 +32,11 @@ public:
 	////座標の取得
 	//int GetLocation();
 	////
+	
+	//フラグの取得
 	int GetFlg();
+	//スコアの取得
+	int GetScore();
 
 public:
 	static float EnemyLocationX;

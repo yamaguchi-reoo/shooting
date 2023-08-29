@@ -18,12 +18,10 @@ Player::Player()
 
 	flg = false;
 }
-
 Player::~Player()
 {
 	delete warpon;
 }
-
 void Player::Update(GameMain* main)
 {
 	//‰EˆÚ“®

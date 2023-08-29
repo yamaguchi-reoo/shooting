@@ -23,6 +23,7 @@ private:
     int hit_time;//敵と当たった時の経過時間
     bool hit_flg;//当たったか当たってないかの判断フラグ
     bool flash_flg;//点滅
+    int total_score;//合計スコア
 public:
     // コンストラクタ
     GameMain();

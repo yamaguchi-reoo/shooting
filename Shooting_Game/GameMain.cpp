@@ -4,7 +4,7 @@ GameMain::GameMain()
 {
 	player = new Player();
 	for (int i = 0; i < BULLET_MAX; i++) {
-		bullet[i] = NULL;
+		bullet[i] = nullptr;
 	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		int Rand = GetRand(4);
@@ -34,15 +34,15 @@ AbstractScene* GameMain::Update()
 	player->Update(this);
 	//弾の更新処理
 	for (int i = 0; i <BULLET_MAX; i++) {
-		if (bullet[i] != NULL) {
+		if (bullet[i] != nullptr) {
 			bullet[i]->Update();
 		}	
 	}
 	//弾が画面外に行くと削除
 	for (int i = 0; i < BULLET_MAX; i++) {
-		if (bullet[i] != NULL) {
+		if (bullet[i] != nullptr) {
 			if (bullet[i]->GetLocation() >= SCREEN_WIDTH || bullet[i]->GetLocation() <= 0) {
-				bullet[i] = NULL;
+				bullet[i] = nullptr;
 			}
 		}
 	}
@@ -80,6 +80,8 @@ void GameMain::Draw() const
 {
 	//残機の描画
 	//DrawFormatString(60, 10, 0xffffff, "%d", life);
+	// スコア描画
+	DrawFormatString(400, 10, 0xffffff, "%d", total_score);
 	//敵の描画
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		enemy[i]->Draw();
@@ -88,10 +90,9 @@ void GameMain::Draw() const
 	if (flash_flg == true) {
 		player->Draw();
 	}
-	
 	//弾の描画
 	for (int i = 0; i < BULLET_MAX; i++) {
-		if (bullet[i] != NULL) {
+		if (bullet[i] != nullptr) {
 			bullet[i]->Draw();
 		}
 	}
@@ -106,7 +107,7 @@ void GameMain::HitCheck()
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		if (player->HitSphere(enemy[i]) == (int)true) {
 			player->Hit();
-			//life--;
+			life--;
 		}
 		else {
 			player->PlayerFlg();
@@ -115,16 +116,17 @@ void GameMain::HitCheck()
 	//プレイヤーの弾が敵と当たった時の処理
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		for (int j = 0; j < BULLET_MAX; j++) {
-			if (bullet[j] != NULL) {
+			if (bullet[j] != nullptr) {
 				if (bullet[j]->HitSphere(enemy[i]) == (int)true && bullet[j]->GetWho() == 0) {
 					enemy[i]->Hit();
+					total_score += 20;//enemy[i]->GetScore();
 				}
 			}
 		}
 	}
 	//エネミーの弾がプレイヤーに当たった時
 	for (int i = 0; i < BULLET_MAX; i++) {
-		if (bullet[i] != NULL) {
+		if (bullet[i] != nullptr) {
 			if (bullet[i]->HitSphere(player) == (int)true && bullet[i]->GetWho() == 1 && hit_flg == false) {
 				life--;
 				hit_flg = true;
@@ -136,7 +138,7 @@ void GameMain::BulletSpawn(int _x, int _y, int _r, int _speed, int _damege,int _
 {
 	//bulletが空だったら引数を渡す
 	for (int i = 0; i < BULLET_MAX; i++) {
-		if (bullet[i] == NULL) {
+		if (bullet[i] == nullptr) {
 			bullet[i] = new Bullet(_x, _y, _r, _speed, _damege,_who);
 			break;
 		}
