@@ -11,6 +11,7 @@ class Player :public CharaBase
 private:
 	N_wayBullet* warpon;
 	bool flg;//ƒtƒ‰ƒO
+	int span;
 public:
 	Player();
 	~Player();

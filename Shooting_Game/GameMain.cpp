@@ -8,13 +8,15 @@ GameMain::GameMain()
 	}
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		int Rand = GetRand(4);
-		enemy[i] = new Enemy(Rand * 100, i*80 /** Rand * 100*/ /** ENEMY_DISTANCE*/);
+		enemy[i] = new Enemy(Rand * 100, i * 80 /** Rand * 100*/ /** ENEMY_DISTANCE*/);
 	}
 
 	life = 1;
 	hit_time = 0;
 	hit_flg = false;
 	flash_flg = true;
+
+	total_score = 0;
 }
 
 GameMain::~GameMain()
@@ -107,7 +109,7 @@ void GameMain::HitCheck()
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		if (player->HitSphere(enemy[i]) == (int)true) {
 			player->Hit();
-			life--;
+			////life--;
 		}
 		else {
 			player->PlayerFlg();
@@ -128,7 +130,7 @@ void GameMain::HitCheck()
 	for (int i = 0; i < BULLET_MAX; i++) {
 		if (bullet[i] != nullptr) {
 			if (bullet[i]->HitSphere(player) == (int)true && bullet[i]->GetWho() == 1 && hit_flg == false) {
-				life--;
+				//life--;
 				hit_flg = true;
 			}
 		}
