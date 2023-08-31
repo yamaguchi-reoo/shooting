@@ -27,6 +27,7 @@ void Bullet::Update()
 {
 	if (who == 0) {
 		location.x = location.x + speed;
+		location.r = 8.0f;
 	}
 	if (who == 1) {
 		speed = 6;

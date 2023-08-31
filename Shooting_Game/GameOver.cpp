@@ -20,4 +20,6 @@ void GameOver::Draw() const
 {
 	SetFontSize(64);
 	DrawString(520, 300, "GameOver", 0xff00000);
+	SetFontSize(16);
+	DrawString(570, 700, "Aボタンでタイトルへ", 0xff00000);
 }

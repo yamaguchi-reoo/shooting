@@ -52,18 +52,6 @@ AbstractScene* GameMain::Update()
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		enemy[i]->Update(this);
 	}
-
-	//ダメージを受けたら点滅
-	if (hit_flg == true) {
-		if (++hit_time % 20 == 0) {
-			flash_flg =! flash_flg;
-		}
-		if (hit_time >= 120) {
-			hit_flg = false;
-			hit_time = 0;
-		}
-	}
-
 	//当たった時の処理
 	HitCheck();
 	//ライフが0でゲームオーバーへ
@@ -89,9 +77,7 @@ void GameMain::Draw() const
 		enemy[i]->Draw();
 	}
 	//プレイヤーの描画
-	if (flash_flg == true) {
-		player->Draw();
-	}
+	player->Draw();
 	//弾の描画
 	for (int i = 0; i < BULLET_MAX; i++) {
 		if (bullet[i] != nullptr) {
@@ -109,7 +95,7 @@ void GameMain::HitCheck()
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		if (player->HitSphere(enemy[i]) == (int)true) {
 			player->Hit();
-			////life--;
+			life--;
 		}
 		else {
 			player->PlayerFlg();
@@ -130,8 +116,7 @@ void GameMain::HitCheck()
 	for (int i = 0; i < BULLET_MAX; i++) {
 		if (bullet[i] != nullptr) {
 			if (bullet[i]->HitSphere(player) == (int)true && bullet[i]->GetWho() == 1 && hit_flg == false) {
-				//life--;
-				hit_flg = true;
+				life--;
 			}
 		}
 	}
