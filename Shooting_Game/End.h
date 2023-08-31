@@ -1,16 +1,14 @@
 #pragma once
 #include "AbstractScene.h"
-
-class Title : public AbstractScene {
+class End :
+    public AbstractScene
+{
 private:
-    int MenuNumber;//カーソル用変数
-    //int Image;//画像用変数
+    int wait_time;
+    int end_pos;
 public:
-    // コンストラクタ
-    Title();
-
-    // デストラクタ
-    ~Title();
+    End();
+    ~End();
 
     // 描画以外の更新を実装
     AbstractScene* Update() override;

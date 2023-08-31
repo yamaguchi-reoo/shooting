@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "PadInput.h"
 #include "GameMain.h"
+#include "End.h"
 enum class MENU {
 	GAME_MAIN = 0,
     HELP,
@@ -40,7 +41,7 @@ AbstractScene* Title::Update(){
             //return new Ranking();
             break;
         case MENU::END:
-            // return new End();
+             return new End();
         default:
             break;
         }
