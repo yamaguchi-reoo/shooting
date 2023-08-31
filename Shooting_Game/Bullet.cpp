@@ -44,8 +44,8 @@ void Bullet::Draw() const
 		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0x00ffff, TRUE);
 	}
 	//DrawCircle(location.x, location.y, location.r, 0xff000f, FALSE);
-	DrawFormatString(10, 120, 0xffffff, "bullet %f", location.y);
-	DrawFormatString(10, 140, 0xffffff, "bullet %f", location.x);
+	//DrawFormatString(10, 120, 0xffffff, "bullet %f", location.y);
+	//DrawFormatString(10, 140, 0xffffff, "bullet %f", location.x);
 }
 float Bullet::GetLocation()
 {

@@ -5,7 +5,6 @@
 #include "End.h"
 enum class MENU {
 	GAME_MAIN = 0,
-    HELP,
 	RANKING,
 	END
 };
@@ -34,9 +33,6 @@ AbstractScene* Title::Update(){
         case MENU::GAME_MAIN:
             return new GameMain();
             break;
-        case MENU::HELP:
-            //return new Help();
-            break;
         case MENU::RANKING:
             //return new Ranking();
             break;
@@ -54,10 +50,10 @@ void Title::Draw() const{
     //ÉÅÉjÉÖÅ[ÇÃï`âÊ
     SetFontSize(64);
     DrawString(730, 240, "Ç∑ÇΩÅ[Ç∆", 0xffffff);
-    DrawString(730, 320, "Ç÷ÇÈÇ’", 0xffffff);
-    DrawString(730, 400, "ÇÁÇÒÇ´ÇÒÇÆ", 0xffffff);
-    DrawString(730, 480, "Ç¶ÇÒÇ«", 0xffffff);
+    DrawString(730, 320, "ÇÁÇÒÇ´ÇÒÇÆ", 0xffffff);
+    DrawString(730, 400, "Ç¶ÇÒÇ«", 0xffffff);
 
-    DrawTriangle(230, 255 + MenuNumber * 55, 250, 270 + MenuNumber * 55, 230, 285 + MenuNumber * 55, GetColor(255, 0, 0), TRUE);
+
+    DrawTriangle(230, 255 + MenuNumber * 65, 250, 270 + MenuNumber * 65, 230, 285 + MenuNumber * 65, GetColor(255, 0, 0), TRUE);
 
 }

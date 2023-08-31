@@ -5,4 +5,4 @@
 #define ENEMY_MAX 8
 #define ENEMY_DISTANCE 150
 
-#define BULLET_MAX 2000
+#define BULLET_MAX 12

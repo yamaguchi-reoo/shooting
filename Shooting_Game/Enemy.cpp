@@ -47,9 +47,8 @@ void Enemy::Draw() const
 		DrawCircle((int)location.x, (int)location.y, (int)location.r, 0x00ffff, TRUE);
 	}
 	if (flg == true) {
-		DrawString(80, 25, "HIT!!!!!!!", 0xffffff);
+		//DrawString(80, 25, "HIT!!!!!!!", 0xffffff);
 	}
-	DrawFormatString(150, 10, 0xffffff, "%f", location.y);
 }
 
 void Enemy::Hit()

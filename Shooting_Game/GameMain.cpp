@@ -71,7 +71,7 @@ void GameMain::Draw() const
 	//残機の描画
 	//DrawFormatString(60, 10, 0xffffff, "%d", life);
 	// スコア描画
-	DrawFormatString(400, 10, 0xffffff, "%d", total_score);
+	//DrawFormatString(400, 10, 0xffffff, "%d", total_score);
 	//敵の描画
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		enemy[i]->Draw();
@@ -84,9 +84,6 @@ void GameMain::Draw() const
 			bullet[i]->Draw();
 		}
 	}
-	DrawFormatString(10, 190, 0xffffff, "%d", hit_time);
-	DrawFormatString(10, 210, 0xffffff, "%d", hit_flg);
-	DrawFormatString(10, 230, 0xffffff, "%d", flash_flg);
 }
 
 void GameMain::HitCheck()
@@ -94,11 +91,7 @@ void GameMain::HitCheck()
 	//プレイヤーと敵が当たったらフラグをtrueに...
 	for (int i = 0; i < ENEMY_MAX; i++) {
 		if (player->HitSphere(enemy[i]) == (int)true) {
-			player->Hit();
 			life--;
-		}
-		else {
-			player->PlayerFlg();
 		}
 	}
 	//プレイヤーの弾が敵と当たった時の処理
@@ -107,7 +100,6 @@ void GameMain::HitCheck()
 			if (bullet[j] != nullptr) {
 				if (bullet[j]->HitSphere(enemy[i]) == (int)true && bullet[j]->GetWho() == 0) {
 					enemy[i]->Hit();
-					total_score += 20;//enemy[i]->GetScore();
 				}
 			}
 		}

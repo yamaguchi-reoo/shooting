@@ -79,21 +79,9 @@ void Player::Draw() const
 {
 	DrawCircle((int)location.x, (int)location.y, (int)location.r, 0xff000f, FALSE);
 	DrawRotaGraph((int)location.x, (int)location.y, 0.7, M_PI / 2, image, TRUE);
-	DrawFormatString(10, 40, 0xffffff, "%d",flg);
-	DrawFormatString(10, 60, 0xffffff, "%f", location.y);
-	DrawFormatString(10, 80, 0xffffff, "%f", location.x);
-	if (flg == 1)
-	{
-		DrawString(10, 20, "HIT!!!!!!!",0xffffff);
-	} 
 }
 void Player::Hit()
 {
 	flg = true;
-}
-
-void Player::PlayerFlg()
-{
-	flg = false;
 }
 
